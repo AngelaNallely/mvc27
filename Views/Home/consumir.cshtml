@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Consumir API</h2>
+    <button id="btnConsumirApi" onclick="consumirApi()">Consumir API</button>
+    <div id="datosApi">
+        @if (Model != null)
+        {
+            <p>@Model.Nombre</p>
+            <p>@Model.Descripcion</p>
+        }
+        else
+        {
+            <p>No hay datos disponibles</p>
+        }
+    </div>
+</div>
+
+<script>
+    function consumirApi() {
+        var datos = { nombre: "Badger", telefono: 66306713333 };
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("ConsumirApi", "MiController")",
+            data: JSON.stringify(datos),
+            contentType: "application/json",
+            success: function (data) {
+                $("#datosApi").html(`
+                    <p>${data.nombre}</p>
+                    <p>${data.descripcion}</p>
+                `);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
+</script>

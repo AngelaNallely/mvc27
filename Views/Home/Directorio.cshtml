@@ -1,0 +1,79 @@
+@model List<MiApi2.Models.DirectorioTelefonicoModel>
+
+<h1>Directorio Telefónico</h1>
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Dependencia</th>
+            <th>Dirección</th>
+            <th>Departamento</th>
+            <th>Nombre</th>
+            <th>Cargo</th>
+            <th>Teléfono</th>
+            <th>Extensión</th>
+            <th>Ubicación</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contacto in Model)
+        {
+            <tr>
+                <td>@contacto.Dependencia</td>
+                <td>@contacto.Direccion</td>
+                <td>@contacto.Departamento</td>
+                <td>@contacto.Nombre</td>
+                <td>@contacto.Cargo</td>
+                <td>@contacto.Telefono</td>
+                <td>@contacto.Extension</td>
+                <td>@contacto.Ubicacion</td>
+                <td>@contacto.Correo</td>
+                <td>
+                    <!--  Eliminar-->
+                    <form asp-action="Delete" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este contacto?');">
+                        <input type="hidden" name="correo" value="@contacto.Correo" />
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+
+                    <!-- Editar -->
+                    <a asp-action="Edit" asp-route-correo="@contacto.Correo" class="btn btn-warning btn-sm">Editar</a>
+                </td>
+            </tr>
+        } 
+    </tbody>
+</table>
+
+<!--añadir un nuevo contacto -->
+<h2>Añadir nuevo contacto</h2>
+<form asp-action="Add" method="post" class="form">
+    <div class="form-group">
+        <label>Dependencia:</label><input type="text" name="Dependencia" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Dirección:</label><input type="text" name="Direccion" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Departamento:</label><input type="text" name="Departamento" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Nombre:</label><input type="text" name="Nombre" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Cargo:</label><input type="text" name="Cargo" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Teléfono:</label><input type="text" name="Telefono" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Extensión:</label><input type="text" name="Extension" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Ubicación:</label><input type="text" name="Ubicacion" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Correo:</label><input type="email" name="Correo" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Añadir</button>
+</form>

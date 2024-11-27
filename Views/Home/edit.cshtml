@@ -1,0 +1,58 @@
+@model MiApi2.Models.DirectorioTelefonicoModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Contacto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Editar Contacto</h1>
+
+        <form asp-action="Edit" method="post" class="row g-3">
+            <div class="col-md-6">
+                <label for="dependencia" class="form-label">Dependencia</label>
+                <input type="text" class="form-control" id="dependencia" name="Dependencia" value="@Model.Dependencia" required />
+            </div>
+            <div class="col-md-6">
+                <label for="direccion" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="direccion" name="Direccion" value="@Model.Direccion" required />
+            </div>
+            <div class="col-md-6">
+                <label for="departamento" class="form-label">Departamento</label>
+                <input type="text" class="form-control" id="departamento" name="Departamento" value="@Model.Departamento" required />
+            </div>
+            <div class="col-md-6">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="Nombre" value="@Model.Nombre" required />
+            </div>
+            <div class="col-md-6">
+                <label for="cargo" class="form-label">Cargo</label>
+                <input type="text" class="form-control" id="cargo" name="Cargo" value="@Model.Cargo" required />
+            </div>
+            <div class="col-md-6">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" name="Telefono" value="@Model.Telefono" required />
+            </div>
+            <div class="col-md-6">
+                <label for="extension" class="form-label">Extensión</label>
+                <input type="text" class="form-control" id="extension" name="Extension" value="@Model.Extension" required />
+            </div>
+            <div class="col-md-6">
+                <label for="ubicacion" class="form-label">Ubicación</label>
+                <input type="text" class="form-control" id="ubicacion" name="Ubicacion" value="@Model.Ubicacion" required />
+            </div>
+            <div class="col-md-6">
+                <label for="correo" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="correo" name="Correo" value="@Model.Correo" readonly />
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
